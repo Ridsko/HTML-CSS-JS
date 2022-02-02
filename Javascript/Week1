@@ -55,29 +55,38 @@
 10. 5512
 11. Waarde die in boolean context wordt omgezet in true
 12. Waarde die in boolean context wordt omgezet in false
-13. 
-14. 
-15. 
-16. 
-17. 
-18. 
-19. 
-20. 
-21. 
-22. 
-23. 
-24. 
-25. 
-26. 
-27. 
-28. 
-29. 
-30. 
-31. 
-32. 
-33. 
-34. 
-35. 
-36. 
-37. 
-38. 
+13. niet Waar
+14. Niet Waar
+16. Waar
+17. Niet Waar
+18. Waar
+19. Niet waar
+20. Niet waar
+21. Waar
+22. == checkt de value === check value en de datatype
+23. Ok...
+24. Het begin van de dag
+25. Het begin van de dag
+RARE OPDRACHTEN/TEKST
+31. not equal if(!age){console.log("niet oud genoeg")}
+32. true
+33. true
+34. true
+35. You do something you like, probably in the public sector!
+36. You do something you like, probably in the public sector!
+37. i want JUNKFOOD
+38. de uitroepteken eruit laten en de true omdraaien
+1.meerdere condities tegelijk checken
+2. inplaats dat je een variabele gebruikt maak je een value
+3. als je geen break gaan alle andere cases in de code block van de eerste case
+4. konijn
+5. koe
+6. niks
+7. konijn
+8. koe
+9. vos
+10. konijn
+11. vos
+12. konijn
+13. statement zijn lines bijv if for loop en expressions zijn bijvoorbeelden waarden van variabelen
+14. korte if statement   conditie ? true : false

@@ -1,9 +1,12 @@
-const junkfood = false;
-const healthyFood = true;
-if(!junkfood){
-    console.log("Good for you")
-}else if (healthyFood && !junkfood){
-    console.log("Great")
-}else{
-    console.log("Dont know what to say");
+const number = 12;
+switch(number){
+
+case "12": 
+case 12  :
+    console.log("konijn");
+    break; 
+   
+default:
+    console.log("vos");
+
 }
