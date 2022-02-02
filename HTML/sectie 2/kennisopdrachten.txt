@@ -1,0 +1,7 @@
+1. <html>
+2. head gebruik je meestal om je andere bestanden te importeren en de body bevat je website dus div's img's p's etc.
+3. met een html tag declareer je de code die je pagina gaat bevatten dus dat betekent dat je html gaat schrijven
+4. een attribuut kun je toevoegen aan element bijv name, alt, value etc.
+5. name
+6. href
+7. intern brengt je naar een andere pagina in je website en een extern brengt je naar een andere website
