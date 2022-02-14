@@ -1,12 +1,2 @@
-const number = 12;
-switch(number){
-
-case "12": 
-case 12  :
-    console.log("konijn");
-    break; 
-   
-default:
-    console.log("vos");
-
-}
+const hond = { ras:'herder', geslacht: 'man', leeftijd: '18' }
+const dieren = ['hond','kat','koe','schaap'];
