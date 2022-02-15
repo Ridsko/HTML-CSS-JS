@@ -30,8 +30,8 @@
         
         .flex-container {
     border: 6px solid black;
-    height: 300px;
-    width: 600px;
+    height: 600px;
+    width: 80%;
     display: flex;
    flex-wrap: wrap;
    justify-content: stretch;
@@ -43,7 +43,6 @@
   .flex-container > div {
     border: 1px solid green;
     width: 19vw;
-    height: auto;
    flex-grow: 1;
     justify-content: center;
     align-items: center;
@@ -52,13 +51,13 @@
 
 @media screen and (max-width:700px){
     .flex-container > div {
-
+        min-width: 600px;
         flex-basis: 120vw;
     }
 }
 @media screen and (max-width: 1200px) and (min-width: 700px) {
   .flex-container > div {
-    flex-basis: 20vw;
+    flex-basis: 10vw;
   }
 }
 
@@ -72,10 +71,12 @@
 
 .flex3{
  background-color: blue;
+ 
 }
 
 .flex4{
  background-color: purple;
+ height:30px;
 }
 
     </style>
