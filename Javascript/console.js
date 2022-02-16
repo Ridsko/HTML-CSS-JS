@@ -1,2 +1,15 @@
-const hond = { ras:'herder', geslacht: 'man', leeftijd: '18' }
-const dieren = ['hond','kat','koe','schaap'];
+const objectOne = {
+
+    firstName: 'Henk',
+    lastName: 'de Vries',
+    age: 2021 - 1988,
+    job: 'teacher',
+    friends: ['Koe','Vos'],
+    getFullName: function(){
+        return `${this.firstName} ${this.lastName}`
+    },
+
+};
+
+const hisAge = 'firstName';
+console.log(objectOne['hisAge']);
