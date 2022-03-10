@@ -1,15 +1,15 @@
 const objectOne = {
 
-    firstName: 'Henk',
-    lastName: 'de Vries',
-    age: 2021 - 1988,
-    job: 'teacher',
-    friends: ['Koe','Vos'],
-    getFullName: function(){
-        return `${this.firstName} ${this.lastName}`
-    },
+    firstName: 'Piet',
+    lastName: 'Janssens',
+    job: 'Fighter',
+    birthYear: 2000,
+    getAge: function(name,job){
+        if(!this.age) this.age = new Date().getFullYear() - this.birthYear;
+        return this.age;
+    }
 
-};
+}
 
-const hisAge = 'firstName';
-console.log(objectOne['hisAge']);
+console.log(objectOne.getAge());
+
