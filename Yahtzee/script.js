@@ -1,4 +1,4 @@
-//Array object
+//dice object
 let dice = [
   { value: null, save: false },
   { value: null, save: false },
@@ -37,7 +37,26 @@ const totals = document.getElementById("item17");
 const bonusup = document.getElementById("item18");
 const allupper = document.getElementById("item19");
 
+const yahztee = document.getElementById("itemm16");
+const threee = document.getElementById("itemm11");
+const fourr = document.getElementById("itemm12");
+const fullhouse = document.getElementById("itemm13");
+const smstraight = document.getElementById("itemm14");
+const lgstraight = document.getElementById("itemm15");
+const chance = document.getElementById("itemm17");
+const totallow = document.getElementById("itemm18");
+const grand = document.getElementById("itemm19"); 
+
 //Eventlisteners
+totallow.addEventListener('click',totallower);
+grand.addEventListener('click',grandtotal);
+smstraight.addEventListener('click',calcsm);
+lgstraight.addEventListener('click',calclg);
+chance.addEventListener('click',calcChance);
+fullhouse.addEventListener('click',calcFull);
+fourr.addEventListener('click',fourofakind);
+threee.addEventListener('click',threeofakind);
+yahztee.addEventListener('click',checkYahtzee);
 ace.addEventListener('click',calcAce);
 two.addEventListener('click',calcTwo);
 three.addEventListener('click',calcThree);
@@ -59,8 +78,8 @@ popupno.addEventListener('click',() => {
 //Global Variables
 let rollCounter = 0;
 let diceValue = [];
-let gameDone;
-let upperValue = [];
+//let gameDone;
+//let upperValue = [];
 let aantalBeurten = 0;
 
 //Roll function
@@ -70,7 +89,7 @@ function rollDice() {
   showSave();
   rollCounter++;
   checkRolls();
-
+  
   if (rollCounter <= 3) {
     diceValue = [];
   }
@@ -81,16 +100,17 @@ function rollDice() {
     };
 
     diceValue.push(dice[i].value);
+    diceValue.sort((a, b) => a - b);
 
   }
 
   console.log(diceValue);
 
-  dice1.textContent = diceValue[0];
-  dice2.textContent = diceValue[1];
-  dice3.textContent = diceValue[2];
-  dice4.textContent = diceValue[3];
-  dice5.textContent = diceValue[4];
+  dice1.textContent = dice[0].value;
+  dice2.textContent = dice[1].value;
+  dice3.textContent = dice[2].value;
+  dice4.textContent = dice[3].value;
+  dice5.textContent = dice[4].value;
   rollDisabled();
   borderDice();
   
@@ -251,26 +271,37 @@ let counterthree = 0;
 let counterfour = 0;
 let counterfive = 0;
 let countersix = 0;
-let upbonus = 35;
+let upbonus = 0;
 let allup = 0;
+
+let chancescore = 0;
+let lgscore = 0;
+let smscore = 0;
+let full = 0;
+let fourok = 0;
+let threeok = 0;
+let yahzteep = 0;
+let totallowerscore = 0;
+
 
 //Does the math for each button
 function calcAce(){
   let resetroll = false;
   let acefiltered = diceValue.filter(aceFilter);
   counterace = acefiltered.length * 1;
-  console.log(counterace)
+  //console.log(counterace)
   ace.textContent = counterace;
   resetRoll()
   totalScore()
   upperBonus()
   alltotal()
+  calcYahtzee()
 }
 function calcTwo(){
   let resetroll = false;
   let twofiltered = diceValue.filter(twoFilter);
   countertwo = twofiltered.length * 2;
-  console.log(countertwo)
+ // console.log(countertwo)
   two.textContent = countertwo;
   resetRoll()
   totalScore()
@@ -281,7 +312,7 @@ function calcThree(){
   let resetroll = false;
   let threefiltered = diceValue.filter(threeFilter);
   counterthree = threefiltered.length * 3;
-  console.log(counterthree)
+//  console.log(counterthree)
   three.textContent = counterthree;
   resetRoll()
   totalScore()
@@ -292,7 +323,7 @@ function calcFour(){
   let resetroll = false;
   let fourfiltered = diceValue.filter(fourFilter);
   counterfour = fourfiltered.length * 4;
-  console.log(counterfour)
+//  console.log(counterfour)
   four.textContent = counterfour;
   resetRoll()
   totalScore()
@@ -305,7 +336,7 @@ function calcFive(){
   let resetroll = false;
   let fivefiltered = diceValue.filter(fiveFilter);
   counterfive = fivefiltered.length * 5;
-  console.log(counterfive)
+ // console.log(counterfive)
   five.textContent = counterfive;
   resetRoll()
   totalScore()
@@ -318,7 +349,7 @@ function calcSix(){
   let resetroll = false;
   let sixfiltered = diceValue.filter(sixFilter);
   countersix = sixfiltered.length * 6;
-  console.log(countersix)
+ // console.log(countersix)
   six.textContent = countersix;
   resetRoll()
   totalScore()
@@ -361,21 +392,21 @@ function resetRoll(){
     dice3.style.border = "";
     dice4.style.border = "";
     dice5.style.border = "";
-    console.log(diceValue);
-    console.log(dice);
+ //   console.log(diceValue);
+  //  console.log(dice);
     dice1.textContent = "Gooi";
     dice2.textContent = "Gooi";
     dice3.textContent = "Gooi";
     dice4.textContent = "Gooi";
     dice5.textContent = "Gooi";
-    console.log(aantalBeurten);
+ //   console.log(aantalBeurten);
   };
 };
 
 function totalScore(){
   if(aantalBeurten == 13){
 totalUpper = counterace + countertwo + counterthree + counterfour + counterfive + countersix;
-console.log(totalUpper)
+//console.log(totalUpper)
 totals.textContent = totalUpper
   };
 };
@@ -383,6 +414,7 @@ totals.textContent = totalUpper
 function upperBonus(){
   if(totalUpper>=63 && aantalBeurten == 13){
 
+    upbonus = 35;
     bonusup.textContent = upbonus;
   };
 };
@@ -395,3 +427,155 @@ function alltotal(){
     allupper.textContent = allup;
   }
 }
+
+
+function checkYahtzee(){
+  let array =  [];
+  for(let i = 1; i<7;i++){
+    
+    array.push(i,i,i,i,i);
+    
+    if(array.join()==diceValue.join()){
+      console.log(diceValue)
+      yahzteep = +50;
+      yahztee.textContent = yahzteep;
+    } else{;
+      
+     array = [];
+  };
+  
+  };
+  resetRoll()
+}
+
+function threeofakind(){
+  if (diceValue[0] === diceValue[1] && diceValue[1] === diceValue[2]) {
+    for (let i = 0; i < dice.length; i++) {
+       console.log(threeok);
+        threeok += dice[i].value; 
+    }
+  } else if (diceValue[1] === diceValue[2] && diceValue[2] === diceValue[3]) {
+    for (let i = 0; i < dice.length; i++) {
+       console.log(threeok);
+        threeok += dice[i].value; 
+    }
+  } else if (diceValue[2] === diceValue[3] && diceValue[3] === diceValue[4]) {
+    for (let i = 0; i < dice.length; i++) {
+       threeok += dice[i].value; 
+        console.log(threeok);
+    } }else {
+      
+    }
+    console.log(threeok);
+    threee.textContent = threeok;
+    resetRoll()
+    } 
+
+
+  function fourofakind() {
+    
+      if (diceValue[1] === diceValue[2] && diceValue[2] === diceValue[3]) {
+        if (diceValue[2] === diceValue[0] || diceValue[2] === diceValue[4]) {
+          for (let i = 0; i < dice.length; i++) {
+            
+            fourok += dice[i].value;
+          }
+        } else {
+          
+          fourok = 0;
+        }
+      } else {
+        fourok = 0;
+        
+      }
+      console.log(fourok);
+      fourr.textContent = fourok;
+      resetRoll()
+      
+  }
+
+  function calcFull(){
+    let combinatie = false;
+    let combinatie2 = false;
+
+    if(diceValue[0] == diceValue[1] && diceValue[1] == diceValue[2]){
+    if(diceValue[3] == diceValue[4]){
+      combinatie = true;
+    }
+  }
+  if(diceValue[4] == diceValue[3] && diceValue[3] == diceValue[2]){
+    if(diceValue[1] == diceValue[0]){
+      combinatie2 = true;
+    }
+  }
+  if(combinatie || combinatie2){
+    full = 25
+    fullhouse.textContent = full;
+  }
+  resetRoll()
+  }
+
+  function calcChance(){
+    
+    for(let i = 0; i < dice.length;i++){
+      chancescore+=dice[i].value;
+    }
+    console.log(chancescore);
+    chance.textContent = chancescore;
+    resetRoll();
+  }
+
+  function calcsm(){
+  let checksm = false;
+  let smcombos = [
+  [1,1,2,3,4],[1,2,2,3,4],[1,2,3,3,4],[1,2,3,4,4],[1,2,3,4,5],
+  [1,2,3,4,6],[2,2,3,4,5],[2,3,3,4,5],[2,3,4,4,5],[2,3,4,5,5],
+  [1,3,4,5,6],[2,3,4,5,6],[3,3,4,5,6],[3,4,4,5,6],[3,4,5,5,6],[3,4,5,6,6]
+  ];
+
+  for(let i = 0; i < smcombos.length;i++){
+  if(JSON.stringify(smcombos[i]) == JSON.stringify(diceValue)){
+    checksm = true;
+   }
+  }
+
+  if(checksm){
+    smscore = 30;
+    smstraight.textContent = smscore;
+  }
+}
+
+function calclg(){
+  let checklg = false;
+  let lgcombos = [
+  [1,2,3,4,5],[2,3,4,5,6]];
+
+  for(let i = 0; i < lgcombos.length;i++){
+  if(JSON.stringify(lgcombos[i]) == JSON.stringify(diceValue)){
+    checklg = true;
+   }
+  }
+
+  if(checklg){
+    lgscore = 45;
+    lgstraight.textContent = lgscore;
+  }
+  rollreset();
+}
+
+function totallower(){
+  
+  if(aantalBeurten == 13){
+totallowerscore = lgscore + smscore + yahzteep + chancescore + threeok + fourok + full;
+totallow.textContent = totallowerscore;
+  }
+}
+
+function grandtotal(){
+  let grand = 0;
+  if(aantalBeurten == 13){
+
+    grand = totallowerscore + allup;
+  }
+}
+
