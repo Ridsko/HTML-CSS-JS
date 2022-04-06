@@ -4,6 +4,12 @@
     font-family:Arial, Helvetica, sans-serif;
     cursor: default;
     background-color: rgb(51, 67, 80);
+    
+}
+
+body{
+    background-image: url('background.jpg');
+    background-size: cover;
 }
 
 .container{
@@ -182,4 +188,90 @@
    width:20%;
    display: none;
    
+}
+
+@media (max-width: 1000px) and (max-height:500px){
+
+.container{
+    width: 450px;
+    margin-left: 20%;
+    column-gap: 30px;
+    
+}
+
+.knoppen{
+    
+    margin-left: 23%;
+   
+}
+
+.upper{
+    margin-left: 35%;
+}
+
+.lower{
+    margin-left:35%;
+}
+
+.dice1, .dice2, .dice3, .dice4, .dice5{
+    width: 50px;
+}
+
+.b1, .b2, .b3, .b4, .b5{
+    width: 50px;
+}
+
+}
+
+@media (max-width: 425px){
+
+    .container{
+        width: 260px;
+        margin-left: 15%;
+        column-gap: 10px;
+        
+        
+    }
+    
+.upper{
+    margin-left: 20%;
+}
+
+.lower{
+    margin-left:20%;
+}
+
+    .knoppen{
+        width: 260px;
+        margin-left: 15%;
+        column-gap: 10px;
+       
+    }
+
+    .knop, .knopr{
+        width: 100px;
+    }
+    
+    .dice1, .dice2, .dice3, .dice4, .dice5{
+        width: 30px;
+        height:35px;
+        font-size: 8px;
+    }
+    
+    .b1, .b2, .b3, .b4, .b5{
+        width: 28px;
+        font-size: 8px;
+    }
+
+    .b:hover{
+        font-size: 8px;
+    }
+
+    .knop:hover{
+        width: 100px;
+    }
+
+    .knopr:hover{
+        width: 100px;
+    }
 }
